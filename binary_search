@@ -1,0 +1,32 @@
+package chap9;
+
+public class binary_search {
+	public int position, count; 
+	public binary_search(){
+		position = 0;
+		count = 0;
+	}
+	public void search(int[] input, int upperbound, int lowerbound, int key){
+		position = (upperbound + lowerbound) / 2;
+		count = 0;
+		while(input[position] != key && lowerbound <= upperbound){
+			count++;
+			if(input[position] > key){
+				upperbound = position - 1;
+			}
+			else{
+				lowerbound = position + 1;
+			}
+			position = (upperbound + lowerbound) / 2;
+		}
+		if(input[position] == key)
+			System.out.println("the index of " + key + " is " + position);
+		else
+			System.out.println("the key word " + key + " not found");
+	}
+	public static void main(String[] args){
+		int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+		binary_search BS = new binary_search();
+		BS.search(array, 9, 0, 9);
+	}
+}
